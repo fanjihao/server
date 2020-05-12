@@ -1,12 +1,11 @@
 const query = require('../model');
 
 module.exports = {
-  getCount(req, res) {
+  getDatas(req, res) {
     console.log('收到获取请求：', req.query)
     const { username } = req.query
 
-    const sql = `
-                SELECT * FROM address a
+    const sql = `SELECT * FROM address a
                 JOIN users u ON a.userId=u.userId
                 WHERE userName=?`;
     query(sql, [ username ])
