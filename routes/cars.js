@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var carsCtrl = require('../Ctrlers/carsCtrl')
+var carsCtrl = require('../controllers/carsCtrl')
 
-/* GET users listing. */
-router.get('/', carsCtrl.getCount);
+/* GET home page. */
+router.post('/getCount',carsCtrl.getCount)
 
 module.exports = router;

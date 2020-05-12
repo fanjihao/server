@@ -3,11 +3,13 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 const expressJWT = require('express-jwt')
+var util = require('./utils/util')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var carsRouter = require('./routes/cars');
-let adminRouter = require('./router/admin');
+// let adminRouter = require('./routes/admin');
+var carsRouter = require('./routes/cars')
+var addressRouter = require('./routes/address')
 
 var app = express();
 
@@ -32,14 +34,15 @@ app.use(expressJWT({
   secret: util.secretOrPrivateKey  // 密钥，对应生成 token 时的密钥
 }).unless({
   path: [ //除了这个地址，其他的URL都需要验证
-    '/users/login'
+      '/users/login'
   ] 
 }));
 
-app.use('/admin',adminRouter)
+// app.use('/admin',adminRouter)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/cars', carsRouter);
+app.use('/cars',carsRouter);
+app.use('/address',addressRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
