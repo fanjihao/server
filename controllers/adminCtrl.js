@@ -15,7 +15,7 @@ module.exorts = {
                     msg:'账号或者密码错误' 
                 })
             } else{
-                if(data[0].AdminPass === userpass){
+                if(data[0].AdminPass === adminpass){
                     const token = jsonwebtoken.sign(
                         {
                             userName: username

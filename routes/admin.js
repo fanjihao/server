@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const adminCtrler = require('../Ctrlers/adminCtrler')
+const adminCtrl = require('../controllers/adminCtrl')
 
 /* GET users listing. */
-router.post('/', adminCtrler.login)
+router.post('/login', adminCtrl.login)
 
 module.exports = router;
