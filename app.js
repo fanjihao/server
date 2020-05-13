@@ -30,11 +30,13 @@ app.all('*', function(req, res, next) {
   next(); // 继续下一个中间件的处理
 });
 
+
 app.use(expressJWT({
   secret: util.secretOrPrivateKey  // 密钥，对应生成 token 时的密钥
 }).unless({
   path: [ //除了这个地址，其他的URL都需要验证
-      '/users/login'
+      '/users/login',
+      '/users/register'
   ] 
 }));
 
