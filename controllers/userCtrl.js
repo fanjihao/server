@@ -31,7 +31,8 @@ module.exports = {
           res.json({
             state: '200',
             msg: '登录成功',
-            token
+            token,
+            data
           });
         } else {
           res.json({
