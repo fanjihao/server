@@ -7,7 +7,7 @@ var util = require('./utils/util')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-// let adminRouter = require('./routes/admin');
+const adminRouter = require('./routes/admin');
 
 var app = express();
 
@@ -36,7 +36,7 @@ app.use(expressJWT({
   ] 
 }));
 
-// app.use('/admin',adminRouter)
+app.use('/admin',adminRouter)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
