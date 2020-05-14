@@ -1,17 +1,16 @@
 const query =require('../model');
-const jsonwebtoken = require('jsonwebtoken');
-const util = require('../utils/util');
 
-module.exorts = {
+module.exports = {
     login(req,res){
         console.log('收到后台管理登录请求：',req.body)
-        let {adminname,adminpass} = req.body;
+        var {adminname,adminpass} = req.body;
 
-        const sql = "SELECT*FROM admin WHERE AdminName=?";
+        const sql = `SELECT  * FROM admin WHERE AdminName=?`;
         query(sql,[adminname])
         .then(data =>{
             if(data.length===0){
                 res.json({
+                    state: '0',
                     msg:'账号或者密码错误' 
                 })
             } else{
@@ -27,6 +26,13 @@ module.exorts = {
                     })
                 }
             }
+        })
+        .catch(err => {
+            res.json({
+                state:'0',
+                msg:'请求失败',
+                err
+            })
         })
     }
 }
