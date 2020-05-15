@@ -7,7 +7,7 @@ module.exports = {
     console.log('收到前端的登录请求：', req.body)
     var { username, userpass } = req.body;
 
-    const sql = `SELECT * FROM users WHERE userName=? AND is_del=1`;
+    const sql = `select * from users where userName=? and is_del=1`;
     query(sql, [ username ])
     .then(data => {
       if(data.length === 0) {
@@ -42,5 +42,43 @@ module.exports = {
         }
       }
     });
+  },
+  regsiter(req,res){
+    console.log('收到前端注册请求：',req.body);
+    const {username,userpass} = req.body;
+    const sql = `select userName from users where userName=?`;
+
+    query(sql,[username])
+    .then(data => {
+      if(data.length === 0){
+        const newSql = `insert into users(userName,userPass)values(?,?)`;
+        query(newSql,[username,userpass])
+        .then(data => {
+          res.json({
+            state:'200',
+            msg:"注册成功"
+          })
+        })
+        .catch(err => {
+          res.json({
+            state:'0',
+            msg:'数据库操作失败',
+            err
+          })
+        })
+      }else{
+        res.json({
+          state:'0',
+          msg:'用户名已存在'
+        })
+      }
+    })
+    .catch(err => {
+      res.json({
+        state:"0",
+        msg:'注册失败',
+        err
+      })
+    })
   }
 }
