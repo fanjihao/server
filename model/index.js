@@ -3,9 +3,9 @@ const mysql = require('mysql');
 
 // 配置连接信息
 const pool = mysql.createPool({
-  host: '127.0.0.1',
+  host: '172.17.7.239',
   user:'root',
-  password: '244819',
+  password: 'root',
   database: 'xian.com',
   port: '3306'
 });
