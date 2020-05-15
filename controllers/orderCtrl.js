@@ -1,5 +1,4 @@
 const query = require('../model');
-<<<<<<< HEAD
 
 module.exports = {
     addOrder(req, res) {
@@ -45,13 +44,13 @@ module.exports = {
                 err
             })
         })
-=======
+        
 var jsonwebtoken = require('jsonwebtoken');
 var util = require('../utils/util');
 
 module.exports = {
-    sub(){
-        
->>>>>>> wang
+    
+}
     }
 }
+    

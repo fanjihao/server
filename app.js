@@ -15,6 +15,9 @@ var flowerRouter = require('./routes/flower')
 var addressRouter = require('./routes/address');
 var orderRouter = require('./routes/order');
 var xianRouter = require('./routes/xianhua');
+var yongRouter = require('./routes/yong');
+var giftRouter = require('./routes/gift');
+
 
 var app = express();
 
@@ -36,14 +39,14 @@ app.all('*', function(req, res, next) {
 });
 
 
-app.use(expressJWT({
-  secret: util.secretOrPrivateKey  // 密钥，对应生成 token 时的密钥
-}).unless({
-  path: [ //除了这个地址，其他的URL都需要验证
-      '/users/login',
-      '/users/register'
-  ] 
-}));
+// app.use(expressJWT({
+//   secret: util.secretOrPrivateKey  // 密钥，对应生成 token 时的密钥
+// }).unless({
+//   path: [ //除了这个地址，其他的URL都需要验证
+//       '/users/login',
+//       '/users/register'
+//   ] 
+// }));
 
 app.use('/admin',adminRouter)
 app.use('/', indexRouter);
@@ -55,6 +58,9 @@ app.use('/goods',goodsRouter);
 app.use('/stores',storesRouter);
 app.use('/flower',flowerRouter)
 app.use('/xianhua',xianRouter);
+app.use('/yong',yongRouter);
+app.use('/gift',giftRouter);
+
 
 
 // catch 404 and forward to error handler
