@@ -11,7 +11,8 @@ var carsRouter = require('./routes/cars')
 var adminRouter = require('./routes/admin');
 var goodsRouter = require('./routes/goods');
 var storesRouter = require('./routes/stores');
-var flowerRouter = require('./routes/flower')
+var flowerRouter = require('./routes/flower');
+var ordersRouter = require('./routes/orders');
 var addressRouter = require('./routes/address');
 var orderRouter = require('./routes/order');
 var xianRouter = require('./routes/xianhua');
@@ -41,7 +42,8 @@ app.all('*', function(req, res, next) {
 // }).unless({
 //   path: [ //除了这个地址，其他的URL都需要验证
 //       '/users/login',
-//       '/users/register'
+//       '/users/register',
+//       '/admin'
 //   ] 
 // }));
 
@@ -53,7 +55,8 @@ app.use('/address',addressRouter)
 app.use('/order',orderRouter)
 app.use('/goods',goodsRouter);
 app.use('/stores',storesRouter);
-app.use('/flower',flowerRouter)
+app.use('/flower',flowerRouter);
+app.use('/orders',ordersRouter);
 app.use('/xianhua',xianRouter);
 
 

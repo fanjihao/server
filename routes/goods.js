@@ -4,6 +4,7 @@ var goodsCtrl = require('../controllers/goodsCtrl')
 
 /* GET home page. */
 router.get('/', goodsCtrl.get);
-router.post('/add',goodsCtrl.add);
+router.post('/addgoods',goodsCtrl.add);
+router.post('/del',goodsCtrl.del);
 
 module.exports = router;
