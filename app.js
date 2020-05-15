@@ -16,6 +16,9 @@ var ordersRouter = require('./routes/orders');
 var addressRouter = require('./routes/address');
 var orderRouter = require('./routes/order');
 var xianRouter = require('./routes/xianhua');
+var yongRouter = require('./routes/yong');
+var giftRouter = require('./routes/gift');
+
 
 var app = express();
 
@@ -58,6 +61,9 @@ app.use('/stores',storesRouter);
 app.use('/flower',flowerRouter);
 app.use('/orders',ordersRouter);
 app.use('/xianhua',xianRouter);
+app.use('/yong',yongRouter);
+app.use('/gift',giftRouter);
+
 
 
 // catch 404 and forward to error handler
