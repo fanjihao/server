@@ -11,6 +11,7 @@ var usersRouter = require('./routes/users');
 var carsRouter = require('./routes/cars')
 var addressRouter = require('./routes/address');
 var orderRouter = require('./routes/order');
+var xianRouter = require('./routes/xianhua');
 
 var app = express();
 
@@ -47,6 +48,7 @@ app.use('/users', usersRouter);
 app.use('/cars',carsRouter);
 app.use('/address',addressRouter);
 app.use('/order',orderRouter);
+app.use('/xianhua',xianRouter);
 
 
 // catch 404 and forward to error handler
