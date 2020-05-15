@@ -36,14 +36,14 @@ app.all('*', function(req, res, next) {
 });
 
 
-app.use(expressJWT({
-  secret: util.secretOrPrivateKey  // 密钥，对应生成 token 时的密钥
-}).unless({
-  path: [ //除了这个地址，其他的URL都需要验证
-      '/users/login',
-      '/users/register'
-  ] 
-}));
+// app.use(expressJWT({
+//   secret: util.secretOrPrivateKey  // 密钥，对应生成 token 时的密钥
+// }).unless({
+//   path: [ //除了这个地址，其他的URL都需要验证
+//       '/users/login',
+//       '/users/register'
+//   ] 
+// }));
 
 app.use('/admin',adminRouter)
 app.use('/', indexRouter);

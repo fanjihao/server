@@ -5,10 +5,9 @@ module.exports = {
     console.log('收到获取请求：', req.query)
 
 
-    let sql = `SELECT * FROM goods a
-    INNER JOIN class2 b ON a.Class2Id=b.Class2Id
-    INNER JOIN sku c ON a.GoodsId=c.GoodsId
-    WHERE a.Class2Id= 1`;
+    let sql = `SELECT * FROM class c 
+    JOIN goods g ON c.ClassId = g.ClassId 
+    JOIN sku s ON s.GoodsId = g.GoodsId`;
     query(sql, null)
     .then(data => {
       console.log('获取数据成功')
