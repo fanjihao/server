@@ -8,12 +8,13 @@ var util = require('./utils/util')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var carsRouter = require('./routes/cars')
-var addressRouter = require('./routes/address')
-var orderRouter = require('./routes/order')
 var adminRouter = require('./routes/admin');
 var goodsRouter = require('./routes/goods');
 var storesRouter = require('./routes/stores');
 var flowerRouter = require('./routes/flower')
+var addressRouter = require('./routes/address');
+var orderRouter = require('./routes/order');
+var xianRouter = require('./routes/xianhua');
 
 var app = express();
 
@@ -53,6 +54,8 @@ app.use('/order',orderRouter)
 app.use('/goods',goodsRouter);
 app.use('/stores',storesRouter);
 app.use('/flower',flowerRouter)
+app.use('/xianhua',xianRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
