@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var ordersCtrl = require('../controllers/orderCtrls')
+var orderCtrls = require('../controllers/orderCtrls')
 
 
-router.post('/addOrder',ordersCtrl.addOrder);
-router.post('/getOrder',ordersCtrl.getOrder);
+// router.post('/addOrder',orderCtrls.addOrder);
+// router.post('/getOrder',orderCtrls.getOrder);
 
 
 module.exports = router;
