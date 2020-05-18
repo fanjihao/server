@@ -4,7 +4,8 @@ module.exports = {
     getData(req,res){
         console.log('收到店铺的请求：',req.query);
 
-        const sql = `SELECT * FROM sku`;
+        const sql = `SELECT * FROM sku a
+        INNER JOIN goods b ON a.GoodsId=b.ClassId`;
 
         query(sql,null)
         .then(data => {
