@@ -24,4 +24,47 @@ module.exports = {
         })
     });
   },
+  addToCar(req, res){
+    console.log('收到添加购物车请求', req.body);
+    const { userid, carsum, skuid } = req.body;
+    const sql = `INSERT INTO car(userId, CarSum, SkuId) values(?,?,?)`;
+    query(sql, [ userid, carsum, skuid ])
+    .then(data => {
+      res.json({
+        state:'200',
+        msg:'添加成功',
+        data
+      })
+      .catch(err => {
+        res.json({
+          state:"0",
+          msg:'添加失败',
+          err
+        })
+      })
+    })
+  },
+  detail(req, res){
+    console.log('鲜花详情', req.body);
+    const { flowerid } = req.body;
+    const sql = `SELECT * FROM goods g
+                JOIN class c ON g.ClassId=c.ClassId
+                JOIN sku s ON g.GoodsId=s.GoodsId
+                WHERE g.GoodsId=?`;
+    query(sql, [ flowerid ])
+    .then(data => {
+      res.json({
+        state:'200',
+        msg:'添加成功',
+        data
+      })
+    })
+    .catch(err => {
+      res.json({
+        state:"0",
+        msg:'添加失败',
+        err
+      })
+    })
+  }
 }

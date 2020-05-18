@@ -4,42 +4,47 @@ var util = require('../utils/util');
 
 module.exports = {
   getCount(req, res) {
-    console.log('收到前端的购物数据请求：', req.body)
-    var { username } = req.body;
+    console.log('收到获取购物车数据请求：', req.body)
+    var { userid } = req.body;
 
-    const sql = `SELECT * from`;
-    query(sql, [ username ])
+    const sql = `SELECT * FROM car c
+                JOIN sku s ON c.SkuId=s.SkuId
+                JOIN goods g ON s.GoodsId=g.GoodsId
+                WHERE c.userId=?`;
+    query(sql, [ userid ])
     .then(data => {
-      if(data.length === 0) {
-        res.json({
-          state: '0',
-          msg: '账户名不正确'
-        });
-      } else {
-        if(data[0].userPass === userpass) {
-          // 生成 token
-          const token = jsonwebtoken.sign(
-            {
-              userName: username
-            }, 
-            util.secretOrPrivateKey , // 秘钥，用于验证
-            { 
-              expiresIn: 60 * 60 // 过期时间，60 分钟
-            }
-          );
-
-          res.json({
-            state: '200',
-            msg: '登录成功',
-            token
-          });
-        } else {
-          res.json({
-            state: '0',
-            msg: '密码不正确'
-          });
-        }
-      }
+      res.json({
+        state:'200',
+        msg:'获取成功',
+        data
+      })
+    })
+    .catch(err => {
+      res.json({
+        state:'0',
+        msg:'获取失败',
+        err
+      })
     });
+  },
+  delData(req, res){
+    console.log('收到删除购物车数据请求', req.body)
+    const { carid } = req.body;
+    const sql = `DELETE FROM car WHERE CarId=?`;
+    query(sql, [ carid ])
+    .then(data => {
+      res.json({
+        state:'200',
+        msg:'删除成功',
+        data
+      })
+      .catch(err => {
+        res.json({
+          state:'0',
+          msg:'删除失败',
+          err
+        })
+      })
+    })
   }
 }
