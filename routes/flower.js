@@ -3,5 +3,6 @@ var router = express.Router();
 var flowerCtrl = require('../controllers/flowerCtrl')
 
 router.get('/getData',flowerCtrl.getData)
+router.post('/getSearch',flowerCtrl.getSearch)
 
 module.exports = router;

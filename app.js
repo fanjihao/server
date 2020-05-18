@@ -14,7 +14,6 @@ var storesRouter = require('./routes/stores');
 var flowerRouter = require('./routes/flower');
 var ordersRouter = require('./routes/orders');
 var addressRouter = require('./routes/address');
-var orderRouter = require('./routes/order');
 var xianRouter = require('./routes/xianhua');
 var yongRouter = require('./routes/yong');
 var giftRouter = require('./routes/gift');
@@ -55,7 +54,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/cars',carsRouter);
 app.use('/address',addressRouter)
-app.use('/order',orderRouter)
+app.use('/orders',ordersRouter)
 app.use('/goods',goodsRouter);
 app.use('/stores',storesRouter);
 app.use('/flower',flowerRouter);
