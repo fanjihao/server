@@ -6,16 +6,19 @@ const expressJWT = require('express-jwt')
 var util = require('./utils/util')
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var carsRouter = require('./routes/cars')
-var adminRouter = require('./routes/admin');
-var goodsRouter = require('./routes/goods');
-var storesRouter = require('./routes/stores');
-var flowerRouter = require('./routes/flower');
-var ordersRouter = require('./routes/orders');
-var addressRouter = require('./routes/address');
-var orderRouter = require('./routes/order');
-var xianRouter = require('./routes/xianhua');
+var usersRouter = require('./routes/users');//用户
+var carsRouter = require('./routes/cars');//购物车
+var adminRouter = require('./routes/admin');//管理员
+var goodsRouter = require('./routes/goods');//商品
+var storesRouter = require('./routes/stores');//商店
+var flowerRouter = require('./routes/flower');//鲜花
+var ordersRouter = require('./routes/orders');//后台订单
+var orderRouter = require('./routes/order');//后台订单
+var addressRouter = require('./routes/address');//地址
+var xianRouter = require('./routes/xianhua');//鲜花
+var yongRouter = require('./routes/yong');//永生花
+var giftRouter = require('./routes/gift');//礼品
+
 
 var app = express();
 
@@ -58,6 +61,9 @@ app.use('/stores',storesRouter);
 app.use('/flower',flowerRouter);
 app.use('/orders',ordersRouter);
 app.use('/xianhua',xianRouter);
+app.use('/yong',yongRouter);
+app.use('/gift',giftRouter);
+
 
 
 // catch 404 and forward to error handler

@@ -4,5 +4,6 @@ var carsCtrl = require('../controllers/carsCtrl')
 
 /* GET home page. */
 router.post('/getCount',carsCtrl.getCount)
+router.post('/delData',carsCtrl.delData)
 
 module.exports = router;

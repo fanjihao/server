@@ -7,7 +7,7 @@ module.exports = {
 
     let sql = `SELECT * FROM class c 
     JOIN goods g ON c.ClassId = g.ClassId 
-    JOIN sku s ON s.GoodsId = g.GoodsId`;
+    JOIN sku s ON s.GoodsId = g.GoodsId `;
     query(sql, null)
     .then(data => {
       console.log('获取数据成功')
