@@ -5,6 +5,7 @@ var orderCtrl = require('../controllers/orderCtrl')
 
 router.post('/addOrder',orderCtrl.addOrder);
 router.post('/getOrder',orderCtrl.getOrder);
+router.post('/getlist',orderCtrl.getlist);
 router.post('/addOrderDetail',orderCtrl.addOrderDetail);
 
 

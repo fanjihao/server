@@ -55,7 +55,8 @@ module.exports = {
     .then(data => {
       res.json({
         state:'200',
-        msg:'添加成功'
+        msg:'添加成功',
+        data
       })
     })
     .catch(err => {
