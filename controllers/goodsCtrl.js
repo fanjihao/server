@@ -5,8 +5,7 @@ module.exports = {
         console.log('收到前端商品管理的请求：',req.query);
 
         const sql = `SELECT * FROM sku a
-        INNER JOIN goods b ON a.GoodsId=b.GoodsId
-        where a.status = 1`;
+        INNER JOIN goods b ON a.GoodsId=b.GoodsId`;
 
         query(sql,null)
         .then(data => {
@@ -43,6 +42,26 @@ module.exports = {
                 msg: '数据增加失败',
                 err
             })
+        })
+    },
+    edit(req,res){
+        const { SkuId} = req.body
+        const sql = `update sku set status=1 where SkuId=?`;
+
+        query(sql, SkuId)
+        .then(data => {
+            res.json({
+                state: '200',
+                msg: '数据查找成功',
+                data
+            });
+        })
+        .catch(err => {
+            res.json({
+                state: '0',
+                msg: '数据查找失败',
+                err
+            });
         })
     },
     del(req,res){
